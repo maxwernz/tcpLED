@@ -52,10 +52,13 @@ int main() {
         //Receive messages from client
         int read_size;
         while ((read_size = recv(client_desc, client_message, strlen(client_message), 0)) > 0) {
-            if (strstr(client_message, "off"))
+            if (strstr(client_message, "off")) {
                 led_off();
-            else
-                led(colors[client_message]);
+            }
+            else {
+                Color_t color = colors[client_message];
+                led(color);
+            }
         }
 
         if (read_size == 0) {
