@@ -52,13 +52,15 @@ int main() {
         //Receive messages from client
         int read_size;
         while ((read_size = recv(client_desc, client_message, strlen(client_message), 0)) > 0) {
+            std::string test = client_message;
             if (strstr(client_message, "off")) {
                 led_off();
             }
             else {
-                puts(client_message);
-                Color_t color = colors[client_message];
-                led(color);
+                puts(test)
+                // puts(client_message);
+                // Color_t color = colors[client_message];
+                // led(color);
             }
         }
 
