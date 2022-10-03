@@ -4,7 +4,7 @@
 
 void led();
 
-const char* color_picker()
+const char* color_picker();
 
 void led_off();
 
