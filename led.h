@@ -2,7 +2,7 @@
 #include <unordered_map>
 #include <iostream>
 
-void led(Color_t color);
+void led(const char* color);
 
 void led_off();
 
