@@ -12,6 +12,7 @@ int main() {
     socklen_t server_info_len = sizeof(server_info);
     socklen_t client_info_len = sizeof(client_info);
     char* message, client_message[2000];
+    //char* colors[] = ["off", "red", "blue", "green", "orange", "white", "warm"];
     //std::unordered_map<const char*, Color_t> colors = {{"red", Color(255, 0, 0)}, {"blue", Color(0, 0, 255)}, {"green", Color(0, 255, 0)}, {"orange", Color(255, 35, 0)}, {"white", Color(255, 255, 255)}, {"warm", Color(255, 50, 10)}};
 
     //Create socket
@@ -57,10 +58,7 @@ int main() {
                 led_off();
             }
             else {
-                std::cout << (test) << std::endl;
-                // puts(client_message);
-                // Color_t color = colors[client_message];
-                // led(color);
+                led(atoi(client_message));
             }
         }
 

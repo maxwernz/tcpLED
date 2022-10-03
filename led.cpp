@@ -1,9 +1,9 @@
 #include "led.h"
 
-void led(Color_t color) {
-    std::unordered_map<const char*, Color_t> colors = {{"red", Color(255, 0, 0)}, {"blue", Color(0, 0, 255)}, {"green", Color(0, 255, 0)}, {"orange", Color(255, 35, 0)}, {"white", Color(255, 255, 255)}, {"warm", Color(255, 50, 10)}};
+void led(int color) {
+    std::unordered_map<int, Color_t> colors = {{1, Color(255, 0, 0)}, {2, Color(0, 0, 255)}, {3, Color(0, 255, 0)}, {4, Color(255, 35, 0)}, {5, Color(255, 255, 255)}, {6, Color(255, 50, 10)}};
     NeoPixel* led = new NeoPixel(168);
-    setColor(led, color);
+    setColor(led, colors[color]);
     
     delete led;
 }
