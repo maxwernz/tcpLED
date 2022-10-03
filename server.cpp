@@ -51,6 +51,7 @@ int main() {
         int read_size;  //connection up?
         while((read_size = recv(client_desc, client_message, strlen(client_message), 0)) > 0) {
             led(client_message);
+            puts(client_message);
         }
 
         if (read_size == 0) {
