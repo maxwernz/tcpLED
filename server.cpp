@@ -12,6 +12,7 @@ int main() {
     socklen_t server_info_len = sizeof(server_info);
     socklen_t client_info_len = sizeof(client_info);
     char* message, client_message[2000];
+    std::unordered_map<const char*, Color_t> colors = {{"red", Color(255, 0, 0)}, {"blue", Color(0, 0, 255)}, {"green", Color(0, 255, 0)}, {"orange", Color(255, 35, 0)}, {"white", Color(255, 255, 255)}, {"warm", Color(255, 50, 10)}};
 
     //Create socket
     socket_desc = socket(AF_INET, SOCK_STREAM, 0);
@@ -53,8 +54,8 @@ int main() {
         while ((read_size = recv(client_desc, client_message, strlen(client_message), 0)) > 0) {
             if (strstr(client_message, "off"))
                 led_off();
-            else if (strstr(client_message, "color"))
-                led();
+            else
+                led(colors[client_message]);
         }
 
         if (read_size == 0) {

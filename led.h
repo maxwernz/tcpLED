@@ -2,9 +2,9 @@
 #include <unordered_map>
 #include <iostream>
 
-void led();
+void led(Color_t color);
 
-char* color_picker(std::unordered_map<const char*, Color_t> colors);
+// char* color_picker(std::unordered_map<const char*, Color_t> colors);
 
 void led_off();
 
