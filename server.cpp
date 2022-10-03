@@ -57,7 +57,7 @@ int main() {
                 led_off();
             }
             else {
-                puts(test)
+                std::cout << (test) << std::endl;
                 // puts(client_message);
                 // Color_t color = colors[client_message];
                 // led(color);
