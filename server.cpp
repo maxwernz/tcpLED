@@ -56,6 +56,7 @@ int main() {
                 led_off();
             }
             else {
+                puts(client_message);
                 Color_t color = colors[client_message];
                 led(color);
             }
