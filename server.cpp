@@ -50,9 +50,7 @@ int main() {
         //Receive messages from client
         int read_size;  //connection up?
         while((read_size = recv(client_desc, client_message, strlen(client_message), 0)) > 0) {
-            if (strstr(client_message, "Farbe")) {
-                led("orange");
-            }
+            led(client_message);
         }
 
         if (read_size == 0) {

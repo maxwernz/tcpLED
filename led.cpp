@@ -5,11 +5,15 @@ void led(const char* color) {
                                             {"green", Color(0, 255, 0)}, {"orange", Color(255, 35, 0)}, {"white", Color(255, 255, 255)}, {"warm", Color(255, 50, 10)}};
     NeoPixel* led = new NeoPixel(168);
 
-    if (strcmp(color, "clear") == 0) {
+    if (!strcmp(color, "clear")) {
         led->clear();
         led->show();
     } else {
-        setColor(led, colors[color]);
+        if (colors.contains(color)) {
+            setColor(led, colors[color]);
+        } else {
+            puts("Farbe gibt es nicht");
+        }
     }
 
     delete led;
