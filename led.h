@@ -2,7 +2,9 @@
 #include <unordered_map>
 #include <iostream>
 
-void led(char* color);
+void led();
+
+const char* color_picker()
 
 void led_off();
 
