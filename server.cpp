@@ -12,7 +12,7 @@ int main() {
     socklen_t server_info_len = sizeof(server_info);
     socklen_t client_info_len = sizeof(client_info);
     char* message, client_message[2000];
-    char* msg;
+    char msg[200];
 
     //Create socket
     socket_desc = socket(AF_INET, SOCK_STREAM, 0);
