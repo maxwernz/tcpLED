@@ -49,7 +49,6 @@ int main() {
         send(client_desc, message, strlen(message), 0);
 
         //Receive messages from client
-        char client_message[2000];
         int read_size;
         while ((read_size = recv(client_desc, client_message, strlen(client_message), 0)) > 0) {
             if (strstr(client_message, "off"))
