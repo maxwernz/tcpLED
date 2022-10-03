@@ -5,13 +5,13 @@ void led() {
 
     const char* col = color_picker();
     NeoPixel* led = new NeoPixel(168);
-    setColor(led, colors[color]);
+    setColor(led, colors[col]);
     
     delete led;
 }
 
-const char* color_picker() {
-    const char* col;
+char* color_picker() {
+    char* col;
     puts("Wich Color do you want?");
     for (auto& it : colors) {
         puts(it.first);
