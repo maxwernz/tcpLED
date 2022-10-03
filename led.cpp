@@ -1,17 +1,18 @@
 #include "led.h"
 
-void led(Color_t color) {
-    std::unordered_map<std::string, Color_t> colors = {{"red", Color(255, 0, 0)}, {"blue", Color(0, 0, 255)}, 
-                                            {"green", Color(0, 255, 0)}, {"orange", Color(255, 35, 0)}, {"white", Color(255, 255, 255)}, {"warm", Color(255, 50, 10)}};
-    NeoPixel* led = new NeoPixel(168);
-    puts(color);
-    if (strcmp(color, "clear") == 0) {
-        led->clear();
-        led->show();
-    } else {
-        setColor(led, colors[color]);
-    }
+void led(const char* color) {
+    std::unordered_map<const char*, Color_t> colors = {{"red", Color(255, 0, 0)}, {"blue", Color(0, 0, 255)}, {"green", Color(0, 255, 0)}, {"orange", Color(255, 35, 0)}, {"white", Color(255, 255, 255)}, {"warm", Color(255, 50, 10)}};
 
+    NeoPixel* led = new NeoPixel(168);
+    setColor(led, colors[color]);
+    
+    delete led;
+}
+
+void led_off() {
+    NeoPixel* led = new NeoPixel(168);
+    led->clear();
+    led->show();
     delete led;
 }
 

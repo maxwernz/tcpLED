@@ -68,11 +68,14 @@ int main() {
 }
 
 void read_color(int client_desc) {
-    char* client_message[2000];
+    char client_message[2000];
     int read_size;
-    std::unordered_map<std::string, Color_t> colors = {{"red", Color(255, 0, 0)}, {"blue", Color(0, 0, 255)}, {"green", Color(0, 255, 0)}, {"orange", Color(255, 35, 0)}, {"white", Color(255, 255, 255)}, {"warm", Color(255, 50, 10)}};
+    //std::unordered_map<char*, Color_t> colors = {{"red", Color(255, 0, 0)}, {"blue", Color(0, 0, 255)}, {"green", Color(0, 255, 0)}, {"orange", Color(255, 35, 0)}, {"white", Color(255, 255, 255)}, {"warm", Color(255, 50, 10)}};
     while ((read_size = recv(client_desc, client_message, strlen(client_message), 0)) > 0) {
-        led(colors[client_message]);
+        if (strstr(client_message, "off"))
+            led_off();
+        else
+            led(client_message);
     }
 
     if (read_size == 0) {
