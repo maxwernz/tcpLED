@@ -2,7 +2,7 @@
 #include <unordered_map>
 #include <iostream>
 
-void led(const char* color="white");
+void led(const char* color);
 
 void setColor(NeoPixel* led, Color_t c);
 

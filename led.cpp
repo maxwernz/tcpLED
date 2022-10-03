@@ -1,6 +1,6 @@
 #include "led.h"
 
-void led(const char* color="white") {
+void led(const char* color) {
     std::unordered_map<std::string, Color_t> colors = {{"red", Color(255, 0, 0)}, {"blue", Color(0, 0, 255)}, 
                                             {"green", Color(0, 255, 0)}, {"orange", Color(255, 35, 0)}, {"white", Color(255, 255, 255)}, {"warm", Color(255, 50, 10)}};
     NeoPixel* led = new NeoPixel(168);
@@ -13,7 +13,6 @@ void led(const char* color="white") {
     }
 
     delete led;
-    return 0;
 }
 
 void setColor(NeoPixel* led, Color_t c) {
