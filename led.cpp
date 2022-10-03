@@ -3,7 +3,7 @@
 void led(Color_t color) {
     std::unordered_map<const char*, Color_t> colors = {{"red", Color(255, 0, 0)}, {"blue", Color(0, 0, 255)}, {"green", Color(0, 255, 0)}, {"orange", Color(255, 35, 0)}, {"white", Color(255, 255, 255)}, {"warm", Color(255, 50, 10)}};
     NeoPixel* led = new NeoPixel(168);
-    setColor(led, colors[color]);
+    setColor(led, color);
     
     delete led;
 }
