@@ -5,7 +5,6 @@
 #include <unistd.h>
 #include "led.h"
 
-void read_color(int client_desc);
 
 int main() {
     int socket_desc, client_desc; //socket file descriptor
@@ -50,37 +49,21 @@ int main() {
         send(client_desc, message, strlen(message), 0);
 
         //Receive messages from client
-        // int read_size;  //connection up?
-        // while((read_size = recv(client_desc, client_message, strlen(client_message), 0)) > 0) {
-        //     led(client_message);
-        //     puts(client_message);
-        // }
+        char client_message[2000];
+        int read_size;
+        while ((read_size = recv(client_desc, client_message, strlen(client_message), 0)) > 0) {
+            if (strstr(client_message, "off"))
+                led_off();
+            else
+                led(client_message);
+        }
 
-        // if (read_size == 0) {
-        //     puts("Client disconnected");
-        // } else if (read_size < 0) {
-        //     perror("recv failed");
-        // }
-        read_color(client_desc);
+        if (read_size == 0) {
+            puts("Client disconnected");
+        } else if (read_size < 0) {
+            perror("recv failed");
+        }
     } 
 
     return 0;
-}
-
-void read_color(int client_desc) {
-    char client_message[2000];
-    int read_size;
-    //std::unordered_map<char*, Color_t> colors = {{"red", Color(255, 0, 0)}, {"blue", Color(0, 0, 255)}, {"green", Color(0, 255, 0)}, {"orange", Color(255, 35, 0)}, {"white", Color(255, 255, 255)}, {"warm", Color(255, 50, 10)}};
-    while ((read_size = recv(client_desc, client_message, strlen(client_message), 0)) > 0) {
-        if (strstr(client_message, "off"))
-            led_off();
-        else
-            led(client_message);
-    }
-
-    if (read_size == 0) {
-        puts("Client disconnected");
-    } else if (read_size < 0) {
-        perror("recv failed");
-    }
 }
