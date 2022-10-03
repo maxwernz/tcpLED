@@ -4,7 +4,7 @@
 
 void led();
 
-char* color_picker();
+char* color_picker(std::unordered_map<const char*, Color_t> colors);
 
 void led_off();
 
