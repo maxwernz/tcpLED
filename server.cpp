@@ -12,7 +12,7 @@ int main() {
     socklen_t server_info_len = sizeof(server_info);
     socklen_t client_info_len = sizeof(client_info);
     char* message, client_message[2000];
-    char msg[200];
+    char* msg;
 
     //Create socket
     socket_desc = socket(AF_INET, SOCK_STREAM, 0);
@@ -53,7 +53,7 @@ int main() {
         int read_size;
         while ((read_size = recv(client_desc, client_message, strlen(client_message), 0)) > 0) {
             puts(client_message);
-            strcpy(msg, client_message);
+            msg = client_message;
             puts(msg);
             if (strstr(msg, "off"))
                 led_off();
