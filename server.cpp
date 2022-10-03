@@ -54,7 +54,7 @@ int main() {
         while ((read_size = recv(client_desc, client_message, strlen(client_message), 0)) > 0) {
             puts(client_message);
             strcpy(msg, client_message);
-            puts(msg)
+            puts(msg);
             if (strstr(msg, "off"))
                 led_off();
             else
