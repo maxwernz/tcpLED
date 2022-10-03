@@ -9,7 +9,7 @@ void led(const char* color) {
         led->clear();
         led->show();
     } else {
-        if (colors.contains(color)) {
+        if (colors.find(color) != colors.end()) {
             setColor(led, colors[color]);
         } else {
             puts("Farbe gibt es nicht");
