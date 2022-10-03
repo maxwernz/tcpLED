@@ -15,8 +15,6 @@ char* color_picker(std::unordered_map<const char*, Color_t> colors) {
     for (auto& it : colors) {
         puts(it.first);
     }
-    std::cout << "Color: ";
-    std::cin >> col;
     return col;
 }
 
