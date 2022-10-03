@@ -3,6 +3,7 @@
 #include <sys/socket.h>
 #include <arpa/inet.h>
 #include <unistd.h>
+#include "led.h"
 
 int main() {
     int socket_desc, client_desc; //socket file descriptor
@@ -49,8 +50,8 @@ int main() {
         //Receive messages from client
         int read_size;  //connection up?
         while((read_size = recv(client_desc, client_message, strlen(client_message), 0)) > 0) {
-            if (strstr(client_message, "Max")) {
-                puts("Das klappt hervorragend");
+            if (strstr(client_message, "Farbe")) {
+                led("orange");
             }
         }
 
